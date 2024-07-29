@@ -1654,7 +1654,6 @@ class Backtest:
             plot_pl=plot_pl,
             plot_volume=plot_volume,
             plot_drawdown=plot_drawdown,
-            plot_trades=plot_trades,
             smooth_equity=smooth_equity,
             relative_equity=relative_equity,
             superimpose=superimpose,
