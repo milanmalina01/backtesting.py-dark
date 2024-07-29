@@ -85,7 +85,6 @@ _equity_curve                          Equ...
 _trades                       Size  EntryB...
 dtype: object
 ```
-[![plot of trading simulation](https://i.imgur.com/xRFNHfg.png)](https://kernc.github.io/backtesting.py/#example)
 
 Find more usage examples in the [documentation].
 
