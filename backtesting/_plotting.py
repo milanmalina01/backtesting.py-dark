@@ -146,7 +146,8 @@ def _maybe_resample_data(resample_rule, df, indicators, equity_data, trades):
             if s.size:
                 # Via int64 because on pandas recently broken datetime
                 mean_time = int(bars.loc[s.index].view(int).mean())
-                new_bar_idx = new_index.get_loc(mean_time, method='nearest')
+                # Find the nearest index without using the `method` argument
+                new_bar_idx = new_index.get_indexer([mean_time], method='nearest')[0]
                 return new_bar_idx
         return f
 
@@ -609,14 +610,14 @@ return this.labels[index] || "";
     if superimpose and is_datetime_index:
         _plot_superimposed_ohlc()
 
-    # ohlc_bars = _plot_ohlc()
+    ohlc_bars = _plot_ohlc()
     _plot_ohlc_trades()
     indicator_figs = _plot_indicators()
     if reverse_indicators:
         indicator_figs = indicator_figs[::-1]
     figs_below_ohlc.extend(indicator_figs)
 
-    # set_tooltips(fig_ohlc, ohlc_tooltips, vline=True, renderers=[ohlc_bars])
+    set_tooltips(fig_ohlc, ohlc_tooltips, vline=True, renderers=[ohlc_bars])
 
     source.add(ohlc_extreme_values.min(1), 'ohlc_low')
     source.add(ohlc_extreme_values.max(1), 'ohlc_high')
